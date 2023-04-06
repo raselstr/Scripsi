@@ -19,6 +19,13 @@
 
     <meta name="description" content="" />
 
+    <!-- Data Tabel -->
+    <script type="text/javascript" src="<?= base_url(); ?>/DataTables/media/js/jquery.js"></script>
+    <script type="text/javascript" src="<?= base_url(); ?>/DataTables/media/js/jquery.dataTables.js"></script>
+    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>/assets/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>/DataTables/media/css/jquery.dataTables.css">
+    <link rel="stylesheet" type="text/css" href="<?= base_url(); ?>/DataTables/media/css/dataTables.bootstrap.
+
     <!-- Favicon -->
     <link rel="icon" type="image/x-icon" href="<?= base_url(); ?>/assets/img/favicon/favicon.ico" />
 

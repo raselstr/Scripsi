@@ -4,57 +4,59 @@
   
 <!-- Content -->
 <div class="container-xxl flex-grow-1 container-p-y">
-  <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">Dashboard /</span> <?= esc($title); ?></h4>
-  <div class="row">
-    <!-- <div class="col-lg-12 mb-4 order-0">
-      <div class="card">
-        <div class="d-flex align-items-end row">
-          <div class="col-sm-7">
-            <div class="card-body">
-              <h5 class="card-title text-primary">Congratulations John! 🎉</h5>
-              <p class="mb-4">
-                You have done <span class="fw-bold">72%</span> more sales today. Check your new badge in
-                your profile.
-              </p>
-
-              <a href="javascript:;" class="btn btn-sm btn-outline-primary">View Badges</a>
-            </div>
-          </div>
-          <div class="col-sm-5 text-center text-sm-left">
-            <div class="card-body pb-0 px-0 px-md-4">
-              <img
-                src="../assets/img/illustrations/man-with-laptop-light.png"
-                height="140"
-                alt="View Badge User"
-                data-app-dark-img="illustrations/man-with-laptop-dark.png"
-                data-app-light-img="illustrations/man-with-laptop-light.png"
-              />
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> -->
-
-
-    <div class="col-lg-12 mb-4 order-0">
-      <div class="card">
-        <div class="d-flex align-items-end row">
-          <div class="col-sm-12">
-            <div class="card-body">
-              <h5 class="card-title text-primary">Congratulations John! 🎉</h5>
-              <p class="mb-4">
-                You have done <span class="fw-bold">72%</span> more sales today. Check your new badge in
-                your profile.
-              </p>
-            </div>
-          </div>
-          
-        </div>
+  <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light"><a href="<?= base_url('/'); ?>" >Dashboard / </a></span> <?= esc($title); ?></h4>
+  <div class="col-lg-12 mb-4 order-0">  
+   <!-- Responsive Table -->
+    <div class="card">
+      <h5 class="card-header"><?= esc($title); ?></h5>
+      <div class="table-responsive text-nowrap">
+        <table class="table card-table data">
+          <thead>
+            <tr>
+              <th>No</th>
+              <th>NIP</th>
+              <th>Nama</th>
+              <th>Eselon</th>
+              <th>tanggal Update</th>
+              <th>Actions</th>
+            </tr>
+          </thead>
+          <tbody>
+            <?php $no = 1; ?>
+            <?php foreach($pegawai as $peg) : ?>
+            <tr>
+              <td><?= $no++; ?></td>
+              <td><?= $peg->nip; ?></td>
+              <td><?= $peg->nama; ?></td>
+              <td><?= $peg->eselon; ?></td>
+              <td><?= $peg->tanggal_update; ?></td>
+              <td>
+                <div class="dropdown">
+                  <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                    <i class="bx bx-dots-vertical-rounded"></i>
+                  </button>
+                  <div class="dropdown-menu">
+                    <a class="dropdown-item" href="javascript:void(0);"
+                      ><i class="bx bx-edit-alt me-1"></i> Edit</a>
+                    
+                    <a class="dropdown-item" href="javascript:void(0);"
+                      ><i class="bx bx-trash me-1"></i> Delete</a>
+                  </div>
+                </div>
+              </td>
+            </tr>
+              <?php endforeach; ?>   
+          </tbody>
+        </table>
       </div>
     </div>
   </div>
 </div>
 <!-- / Content -->
+
+<hr class="my-5" />
+
+              
 
 
 <?= $this->endSection(); ?>

@@ -9,8 +9,10 @@ class PegawaiController extends BaseController
     public function index()
     {
         $data = [
-        'title' => 'Data Pegawai'
+        'title' => 'Data Pegawai',
+        'pegawai' => $this->PegawaiModel->findAll(),
         ];
+
         return view('dashboard/pegawai/index', $data);
     }
 }
