@@ -33,7 +33,7 @@
             </li>
             
             <li class="menu-item">
-              <a href="#" class="menu-link">
+              <a href="<?= base_url('pegawai'); ?>" class="menu-link">
                 <i class="menu-icon tf-icons bx bxs-user-circle"></i>
                 <div data-i18n="Basic">Pegawai</div>
               </a>
