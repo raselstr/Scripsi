@@ -31,6 +31,9 @@ $routes->set404Override();
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
 $routes->get('pegawai', 'Dashboard\PegawaiController::index');
+$routes->get('pegawai-form','Dashboard\PegawaiController::pegawai_form');
+$routes->match(['get', 'post'], 'pegawai/tambah','Dashboard\PegawaiController::tambah');
+
 
 /*
  * --------------------------------------------------------------------

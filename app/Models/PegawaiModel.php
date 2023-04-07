@@ -20,14 +20,23 @@ class PegawaiModel extends Model
     protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'tanggal_input';
-    protected $updatedField  = 'tanggal_ubah';
+    protected $updatedField  = 'tanggal_update';
     // protected $deletedField  = 'deleted_at';
 
     // Validation
-//     protected $validationRules      = [];
-//     protected $validationMessages   = [];
-//     protected $skipValidation       = false;
-//     protected $cleanValidationRules = true;
+    protected $validationRules      = [
+        'nip' => 'required',
+        'nama' => 'required',
+        'eselon' => 'required',
+    ];
+    protected $validationMessages   = [
+        'nip' => [
+            'required' => 'nip tidak boleh kosong'
+        ],
+            
+    ];
+    protected $skipValidation       = false;
+    // protected $cleanValidationRules = true;
 
 //     // Callbacks
 //     protected $allowCallbacks = true;
