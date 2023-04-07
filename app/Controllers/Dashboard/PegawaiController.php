@@ -31,7 +31,6 @@ class PegawaiController extends BaseController
     {
         $PegawaiModel = new PegawaiModel();      
         $data = [
-            'title' => 'Tambah Data',
             'nip' => $this->request->getVar('nip'),
             'nama' => $this->request->getVar('nama'),
             'eselon' => $this->request->getVar('eselon'),
