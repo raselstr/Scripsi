@@ -61,13 +61,15 @@ class PegawaiController extends BaseController
             ],
         ]);
             $data = [
+                'title' => 'Form Create',
+                'validation' => \Config\Services::validation(),
                 'nip' => $this->request->getVar('nip'),
                 'nama' => $this->request->getVar('nama'),
                 'eselon' => $this->request->getVar('eselon'),
             ];
 
         if(!$validation) {
-            echo view('dashboard/pegawai/pegawai_form', [
+            echo view('dashboard/pegawai/pegawai_form', $data, [
                 'validation' => $this->validator
             ]);
         }else{

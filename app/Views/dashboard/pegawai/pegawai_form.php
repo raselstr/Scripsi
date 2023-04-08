@@ -6,19 +6,14 @@
 <div id="layoutSidenav_content">
   <main>
     <div class="container-fluid px-4">
-        <h1 class="mt-4">Pegawai Form</h1>
+        <h1 class="mt-4"><?= $title; ?></h1>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
             <li class="breadcrumb-item active">Pegawai Form</li>
         </ol>
         <div class="card mb-4">
             <div class="card-body">
-              <?php if($validation->getErrors()){
-                echo '<fieldset style = "border:red dashed 1px; padding:15px">';
-                echo '<div style="color:red">' .$validation->listErrors().'</div>';
-                echo '<fieldset>';
-              }
-              ?>
+              
            
               <form action="<?= base_url('pegawai/tambah'); ?>" method="post">
                 <?= csrf_field() ?>
