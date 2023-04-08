@@ -38,8 +38,9 @@ class PegawaiController extends BaseController
     {
 
         helper(['form']);
-
+       
         $validation = $this->validate([
+        // $validation->setRules([
             'nip' => [
                 'rules' => 'required|min_length[18]',
                 'errors' => [
@@ -61,7 +62,7 @@ class PegawaiController extends BaseController
             ],
         ]);
             $data = [
-                'title' => 'Form Create',
+                'title' => 'Tambah Pegawai',
                 'validation' => \Config\Services::validation(),
                 'nip' => $this->request->getVar('nip'),
                 'nama' => $this->request->getVar('nama'),
@@ -72,17 +73,25 @@ class PegawaiController extends BaseController
             echo view('dashboard/pegawai/pegawai_form', $data, [
                 'validation' => $this->validator
             ]);
+            // return redirect()->back()->withInput();
         }else{
             $this->PegawaiModel->save($data);
             return redirect('pegawai');
-
         }
+
+        // if(!$validation){
+        //     return redirect()->to('pegawai-form')->withInput()->with('validation',$validation);
+        // }
 
             
         // if(!$validation){
         //     session()->setFlashdata('error',$this->validator->listErrors());
         //     return redirect()->back()->withInput();
         // }else{
+        // }
+
+        // if(!$this->validateData($data,$rules)){
+        //     return redirect()->back()->withInput();
         // }
     }
   
