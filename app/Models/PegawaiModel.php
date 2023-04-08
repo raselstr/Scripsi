@@ -24,18 +24,18 @@ class PegawaiModel extends Model
     // protected $deletedField  = 'deleted_at';
 
     // Validation
-    protected $validationRules      = [
-        'nip' => 'required',
-        'nama' => 'required',
-        'eselon' => 'required',
-    ];
-    protected $validationMessages   = [
-        'nip' => [
-            'required' => 'nip tidak boleh kosong'
-        ],
+    // protected $validationRules      = [
+    //     'nip' => 'required',
+    //     'nama' => 'required',
+    //     'eselon' => 'required',
+    // ];
+    // protected $validationMessages   = [
+    //     'nip' => [
+    //         'required' => 'nip tidak boleh kosong'
+    //     ],
             
-    ];
-    protected $skipValidation       = false;
+    // ];
+    // protected $skipValidation       = false;
     // protected $cleanValidationRules = true;
 
 //     // Callbacks
