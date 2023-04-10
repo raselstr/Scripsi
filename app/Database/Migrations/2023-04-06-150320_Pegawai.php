@@ -5,7 +5,7 @@ namespace App\Database\Migrations;
 use CodeIgniter\Database\Migration;
 use DateTime;
 
-class Opd extends Migration
+class Pegawai extends Migration
 {
     public function up()
     {
