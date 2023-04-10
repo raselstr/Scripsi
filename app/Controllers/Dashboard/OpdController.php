@@ -20,17 +20,18 @@ class OpdController extends BaseController
     {
         $OpdModel = new \App\Models\OpdModel();
         $save = $OpdModel->save($this->request->getVar());
+        // session()->getFlashdata('success','Data Berhasil disimpan');
+            
 
-        if($save){
-            session()->getFlashdata('success','Data Berhasil disimpan');
-            return redirect()->to('opd');
-        } else {
+        if(!$save){
             //menampilkan data Old
             session()->setFlashdata('hasForm',$this->request->getVar());
 
             //menampilkan error validation model
             session()->setFlashdata('validation',$OpdModel->errors());
             return redirect()->to('opd'.$this->request->getVar('id'));
+        } else {
+            return redirect()->back()->with('success','Berhasil disimpan');
         }
 
         // dd($save);

@@ -25,7 +25,7 @@
           </div>
           <?php if(session('success')): ?>
             <div class="alert alert-success" role="alert">
-              <?= session('message'); ?>
+              <?= session('success'); ?>
             </div>
           <?php endif; ?>
           <table id="datatablesSimple">
@@ -66,12 +66,14 @@
         <h5 class="modal-title" id="exampleModalLabel">Tambah OPD</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-          <?php if (session()->getFlashdata('asForm')) 
+      <!-- menampilkan data yang sedang diinput agar tidak hilang (seperti Old) -->
+          <?php if (session()->getFlashdata('hasForm')) 
           {
             extract(session()->getFlashData('hasForm'));
           }
           ?>
       <div class="modal-body">
+
         <?php if(session()->getFlashData('validation')) { ?>
             <div class="alert alert-danger">
               <ul>
@@ -86,7 +88,13 @@
         <div class="mb-3">
             <label for="nama_opd" class="form-label">Nama OPD</label>
             <input type="text" class="form-control" name="nama_opd" id="nama_opd" placeholder="Masukkan Nama OPD">
-        </div>
+                  <?php if(isset(session()->getFlashData('validation')['nama_opd'])) { ?>
+                    <div class="alert alert-danger">
+                        <?= session()->getFlashData('validation')['nama_opd'] ?>
+                    </div>
+                  <?php } ?>
+        
+          </div>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
