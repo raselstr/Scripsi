@@ -1,6 +1,7 @@
 <?php
 
 namespace Config;
+// use App\Controllers\Pages;
 
 // Create a new instance of our RouteCollection class.
 $routes = Services::routes();
@@ -30,10 +31,17 @@ $routes->set404Override();
 // We get a performance increase by specifying the default
 // route since we don't have to scan directories.
 $routes->get('/', 'Home::index');
+
+//route bawaan CI 4 untuk page statis
+// $routes->get('pages', [Pages::class, 'index']);
+// $routes->get('(:segment)', [Pages::class, 'view']);
+
+//route alamat page yg diinput manual
 $routes->get('pegawai', 'Dashboard\PegawaiController::index');
 $routes->get('pegawai-form','Dashboard\PegawaiController::pegawai_form');
 $routes->match(['get', 'post'], 'pegawai/tambah','Dashboard\PegawaiController::tambah');
-
+$routes->get('opd', 'Dashboard\OpdController::index');
+$routes->post('opd-create', 'Dashboard\OpdController::create');
 
 /*
  * --------------------------------------------------------------------

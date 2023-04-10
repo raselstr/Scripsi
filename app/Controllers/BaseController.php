@@ -10,6 +10,8 @@ use CodeIgniter\HTTP\ResponseInterface;
 use Psr\Log\LoggerInterface;
 
 use App\Models\PegawaiModel;
+use App\Models\OpdModel;
+
 
 /**
  * Class BaseController
@@ -57,5 +59,6 @@ abstract class BaseController extends Controller
 
         // E.g.: $this->session = \Config\Services::session();
         $this->PegawaiModel = new PegawaiModel();
+        $this->OpdModel = new OpdModel();
     }
 }
