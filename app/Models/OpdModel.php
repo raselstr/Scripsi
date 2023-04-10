@@ -25,11 +25,12 @@ class OpdModel extends Model
 
     // Validation
     protected $validationRules      = [
-        'nama_opd' => 'required',
+        'nama_opd' => 'required|min_length[5]',
     ];
     protected $validationMessages   = [
         'nama_opd' => [
-            'required' => 'Nama OPD tidak boleh kosong'
+            'required' => 'Nama OPD tidak boleh kosong',
+            'min_length' => 'Harus lebih dari 5 karakter',
         ],
     ];
     protected $skipValidation       = false;

@@ -17,13 +17,17 @@
           <?= esc($title); ?>
         </div>
         <div class="card-body">
-          <div class="card col-2 mb-4">
+          <div class="card col-4 mb-4">
             <!-- Button trigger modal -->
             <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
             Tambah OPD
             </button>
           </div>
-          
+          <?php if(session('success')): ?>
+            <div class="alert alert-success" role="alert">
+              <?= session('message'); ?>
+            </div>
+          <?php endif; ?>
           <table id="datatablesSimple">
               <thead>
                   <tr>
@@ -62,14 +66,22 @@
         <h5 class="modal-title" id="exampleModalLabel">Tambah OPD</h5>
         <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
       </div>
-      <?php if (! empty($errors)): ?>
-          <div class="alert alert-danger">
-          <?php foreach ($errors as $field => $error): ?>
-              <p><?= esc($error) ?></p>
-          <?php endforeach ?>
-          </div>
-      <?php endif ?>
+          <?php if (session()->getFlashdata('asForm')) 
+          {
+            extract(session()->getFlashData('hasForm'));
+          }
+          ?>
       <div class="modal-body">
+        <?php if(session()->getFlashData('validation')) { ?>
+            <div class="alert alert-danger">
+              <ul>
+                <?php foreach(session()->getFlashdata('validation')as $item) : ?>
+                  <li><?= $item  ?></li>
+                <?php endforeach ?>
+              </ul>
+            </div>
+          <?php } ?>
+
         <?= form_open('opd-create') ?>
         <div class="mb-3">
             <label for="nama_opd" class="form-label">Nama OPD</label>

@@ -16,13 +16,30 @@ class OpdController extends BaseController
         return view('dashboard/opd/index', $data);
     }
 
-    public function create()
+    public function save()
     {
-        $data = [
-            'title' => 'OPD',
-            'nama_opd' => $this->request->getVar('nama_opd'),
-        ];
-        $this->OpdModel->save($data);
-        return redirect('opd');
+        $OpdModel = new \App\Models\OpdModel();
+        $save = $OpdModel->save($this->request->getVar());
+
+        if($save){
+            session()->getFlashdata('success','Data Berhasil disimpan');
+            return redirect()->to('opd');
+        } else {
+            //menampilkan data Old
+            session()->setFlashdata('hasForm',$this->request->getVar());
+
+            //menampilkan error validation model
+            session()->setFlashdata('validation',$OpdModel->errors());
+            return redirect()->to('opd'.$this->request->getVar('id'));
+        }
+
+        // dd($save);
+
+        // $data = [
+        //     'title' => 'OPD',
+        //     'nama_opd' => $this->request->getVar('nama_opd'),
+        // ];
+        // $this->OpdModel->save($data);
+        // return redirect('opd');
     }
 }

@@ -41,7 +41,7 @@ $routes->get('pegawai', 'Dashboard\PegawaiController::index');
 $routes->get('pegawai-form','Dashboard\PegawaiController::pegawai_form');
 $routes->match(['get', 'post'], 'pegawai/tambah','Dashboard\PegawaiController::tambah');
 $routes->get('opd', 'Dashboard\OpdController::index');
-$routes->post('opd-create', 'Dashboard\OpdController::create');
+$routes->post('opd-create', 'Dashboard\OpdController::save');
 
 /*
  * --------------------------------------------------------------------
