@@ -18,7 +18,7 @@
         </div>
         <div class="card-body">
           <div class="card col-2 mb-4">
-            <a class="btn btn-primary" href="<?= 'pegawai-form'; ?>">Tambah Data Pegawai</a>
+            <a class="btn btn-primary" href="<?= 'pegawai-form'; ?>"><?= esc($title); ?></a>
           </div>
          
           <table id="datatablesSimple">

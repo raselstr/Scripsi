@@ -7,11 +7,7 @@ use App\Controllers\BaseController;
 
 class PegawaiController extends BaseController
 {
-    public  function __construct(){
-        helper(['url', 'form']);
-    }
     
-
     public function index()
     {
        
@@ -24,23 +20,18 @@ class PegawaiController extends BaseController
         return view('dashboard/pegawai/index', $data);
     }
 
+    protected $helpers = ['form'];
+
     public function pegawai_form()
     {
-        $data = [
-            'validation' => \Config\Services::validation(),
-            'title' => 'Tambah Pegawai',
+        $judul = [
+            'title' => 'Form Tambah Pegawai',
         ];
 
-        return view('dashboard/pegawai/pegawai_form', $data);
-    }
-
-    public function tambah()
-    {
-
-        helper(['form']);
-       
-        $validation = $this->validate([
-        // $validation->setRules([
+        if (! $this->request->is('post')) {
+            return view('dashboard/pegawai/pegawai_form', $judul);
+        }
+        $rules = [
             'nip' => [
                 'rules' => 'required|min_length[18]',
                 'errors' => [
@@ -60,39 +51,17 @@ class PegawaiController extends BaseController
                     'required' => 'Eselon tidak boleh kosong',
                 ],
             ],
-        ]);
-            $data = [
-                'title' => 'Tambah Pegawai',
-                'validation' => \Config\Services::validation(),
-                'nip' => $this->request->getVar('nip'),
-                'nama' => $this->request->getVar('nama'),
-                'eselon' => $this->request->getVar('eselon'),
-            ];
-
-        if(!$validation) {
-            echo view('dashboard/pegawai/pegawai_form', $data, [
-                'validation' => $this->validator
-            ]);
-            // return redirect()->back()->withInput();
-        }else{
-            $this->PegawaiModel->save($data);
-            return redirect('pegawai');
-        }
-
-        // if(!$validation){
-        //     return redirect()->to('pegawai-form')->withInput()->with('validation',$validation);
-        // }
-
             
-        // if(!$validation){
-        //     session()->setFlashdata('error',$this->validator->listErrors());
-        //     return redirect()->back()->withInput();
-        // }else{
-        // }
+        ];
 
-        // if(!$this->validateData($data,$rules)){
-        //     return redirect()->back()->withInput();
-        // }
-    }
-  
+        if (! $this->validate($rules)){
+            return redirect()->back()->withInput();
+        }
+        
+
+        $data = $this->request->getPost(array_keys($rules));
+        $this->PegawaiModel->save($data);
+        return redirect('pegawai');
+
+    }  
 }

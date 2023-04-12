@@ -13,35 +13,35 @@
         </ol>
         <div class="card mb-4">
             <div class="card-body">
-              <?= validation_list_errors(); ?>
+              
            
-              <?= form_open('pegawai-form'); ?>
+              <form action="<?= base_url('pegawai/tambah'); ?>" method="post">
                 <?= csrf_field() ?>
                 
                   <div class="mb-3 row">
                     <label for="nip" class="col-sm-2 col-form-label">NIP</label>
                     <div class="col-sm-10">
-                      <input type="text" name="nip" value="<?= set_value('nip') ?>" class="form-control <?= (validation_errors('nip')) ? 'is-invalid' : null; ?>" >
+                      <input type="text" name="nip" value="<?= old('nip'); ?>" class="form-control <?= ($validation->hasError('nip')) ? 'is-invalid' : null; ?>" >
                           <div class="invalid-feedback">
-                            <?= validation_show_error('nip') ?>
+                            <?= $validation->getError('nip'); ?>
                           </div>
                     </div>
                   </div>
                   <div class="mb-3 row">
                     <label for="nama" class="col-sm-2 col-form-label">Nama</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control <?= validation_errors('nama') ? 'is-invalid' : null; ?>" name="nama" value="<?= set_value('nama') ?>">
+                        <input type="text" class="form-control <?= ($validation->hasError('nama')) ? 'is-invalid' : null; ?>" name="nama">
                           <div class="invalid-feedback">
-                            <?= validation_show_error('nama'); ?>
+                            <?= $validation->getError('nama'); ?>
                           </div>
                     </div>
                   </div>
                   <div class="mb-3 row">
                     <label for="eselon" class="col-sm-2 col-form-label">Eselon</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control <?= validation_errors('eselon') ? 'is-invalid' : null; ?>" name="eselon" value="<?= set_value('eselon') ?>">
+                        <input type="text" class="form-control <?= ($validation->hasError('eselon')) ? 'is-invalid' : null; ?>" name="eselon">
                           <div class="invalid-feedback">
-                            <?= validation_show_error('eselon'); ?>
+                            <?= $validation->getError('eselon'); ?>
                           </div>
                       </div>
                   </div>
