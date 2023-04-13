@@ -14,14 +14,14 @@
         <div class="card mb-4">
             <div class="card-body">
               
-               <!-- tambahi tag php untuk menampilkan seluruh error -->
+              <?=   validation_list_errors();   ?>  <!-- tambahi tag php untuk menampilkan seluruh error -->
            
               <?= form_open('pegawai-form'); ?>
                 <?= csrf_field() ?>
                   <div class="mb-3 row">
                     <label for="nip" class="col-sm-2 col-form-label">NIP</label>
                     <div class="col-sm-10">
-                      <input type="text" name="nip" value="<?= old('nip') ?>" class="form-control <?= (isset(validation_errors()['nip'])) ? 'is-invalid' : null; ?>" >
+                      <input type="text" name="nip" value="<?= set_value('nip') ?>" class="form-control <?= (isset(validation_errors()['nip'])) ? 'is-invalid' : null; ?>" >
                           <div class="invalid-feedback">
                             <?= validation_show_error('nip') ?>
                           </div>
@@ -30,7 +30,7 @@
                   <div class="mb-3 row">
                     <label for="nama" class="col-sm-2 col-form-label">Nama</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control <?= isset(validation_errors()['nama']) ? 'is-invalid' : null; ?>" name="nama" value="<?= old('nama') ?>">
+                        <input type="text" class="form-control <?= isset(validation_errors()['nama']) ? 'is-invalid' : null; ?>" name="nama" value="<?= set_value('nama') ?>">
                           <div class="invalid-feedback">
                             <?= validation_show_error('nama'); ?>
                           </div>
@@ -39,7 +39,7 @@
                   <div class="mb-3 row">
                     <label for="eselon" class="col-sm-2 col-form-label">Eselon</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control <?= isset(validation_errors()['eselon']) ? 'is-invalid' : null; ?>" name="eselon" value="<?= old('eselon') ?>">
+                        <input type="text" class="form-control <?= isset(validation_errors()['eselon']) ? 'is-invalid' : null; ?>" name="eselon" value="<?= set_value('eselon') ?>">
                           <div class="invalid-feedback">
                             <?= validation_show_error('eselon'); ?>
                           </div>

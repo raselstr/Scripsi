@@ -24,6 +24,7 @@ class PegawaiController extends BaseController
 
     public function pegawai_form()
     {
+        
         $judul = [
             'title' => 'Form Tambah Pegawai',
         ];
