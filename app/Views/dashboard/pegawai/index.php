@@ -20,7 +20,11 @@
           <div class="card col-2 mb-4">
             <a class="btn btn-primary" href="<?= 'pegawai-form'; ?>"><?= esc($title); ?></a>
           </div>
-         
+         <?php if (session('success')) : ?>
+                  <div class="alert alert-success" role="alert">
+                    <?= session('success'); ?>
+                  </div>
+              <?php endif; ?>
           <table id="datatablesSimple">
               <thead>
                   <tr>

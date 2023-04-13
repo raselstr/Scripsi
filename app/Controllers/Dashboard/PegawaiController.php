@@ -62,7 +62,7 @@ class PegawaiController extends BaseController
 
         $data = $this->request->getPost(array_keys($rules));
         $this->PegawaiModel->save($data);
-        return redirect('pegawai');
+        return redirect()->to('pegawai')->with('success','Data Berhasil disimpan');
 
     }  
 }

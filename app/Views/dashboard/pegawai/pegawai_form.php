@@ -14,7 +14,7 @@
         <div class="card mb-4">
             <div class="card-body">
               
-               <!-- tambahi tag php untuk menampilkan seluruh error -->
+               
            
               <?= form_open('pegawai-form'); ?>
                 <?= csrf_field() ?>
