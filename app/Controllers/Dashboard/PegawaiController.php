@@ -64,5 +64,24 @@ class PegawaiController extends BaseController
         $this->PegawaiModel->save($data);
         return redirect()->to('pegawai')->with('success','Data Berhasil disimpan');
 
-    }  
+    }
+    
+    public function edit($id)
+    {
+        $data = $this->PegawaiModel->getDataById($id_pegawai);
+        return view('edit_form', $data);
+    }
+
+    public function update($id)
+    {
+
+    }
+
+    public function delete($id_pegawai)
+    {
+        // dd($id_pegawai);
+        $pegawai = $this->PegawaiModel->find($id_pegawai);
+        $this->PegawaiModel->delete($pegawai);
+        return redirect()->back();
+    }
 }

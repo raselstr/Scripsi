@@ -47,7 +47,7 @@
                     <td><?= date('d/m/Y H:i:s',strtotime($peg->tanggal_update)); ?></td>
                     <td>
                       <a href="" class="btn btn-success btn-sm"><i class="fas fa-edit"></i>Ubah</a>
-                      <a href="" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i>Hapus</a>
+                      <a href="<?= base_url('pegawai-hapus/' . $peg->id_pegawai); ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i>Hapus</a>
                     </td>
                   </tr>
                   <?php endforeach; ?>   
