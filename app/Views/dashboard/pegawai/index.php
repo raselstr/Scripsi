@@ -33,7 +33,7 @@
                       <th>Nama</th>
                       <th>Eselon</th>
                       <th>tanggal Update</th>
-                      <th>Actions</th>
+                      <th width="10%">Actions</th>
                   </tr>
               </thead>
               <tbody>
