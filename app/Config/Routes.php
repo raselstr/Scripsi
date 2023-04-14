@@ -39,7 +39,8 @@ $routes->get('/', 'Home::index');
 //route alamat page yg diinput manual
 $routes->get('pegawai', 'Dashboard\PegawaiController::index');
 $routes->match(['get', 'post'],'pegawai-form','Dashboard\PegawaiController::pegawai_form');
-$routes->delete('pegawai-hapus/(:nums)','Dashboard\PegawaiController::delete/$1');
+$routes->delete('pegawai-hapus/(:num)', 'Dashboard\PegawaiController::delete/$1');
+// $routes->get('pegawai-hapus/(:num)','Dashboard\PegawaiController::delete/$1');
 // $routes->match(['get', 'post'], 'pegawai/tambah','Dashboard\PegawaiController::tambah');
 $routes->get('opd', 'Dashboard\OpdController::index');
 $routes->post('opd-create', 'Dashboard\OpdController::save');

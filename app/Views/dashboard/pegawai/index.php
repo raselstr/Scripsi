@@ -47,7 +47,12 @@
                     <td><?= date('d/m/Y H:i:s',strtotime($peg->tanggal_update)); ?></td>
                     <td>
                       <a href="" class="btn btn-success btn-sm"><i class="fas fa-edit"></i>Ubah</a>
-                      <a href="<?= base_url('pegawai-hapus/' . $peg->id_pegawai); ?>" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i>Hapus</a>
+                      <form action="<?= site_url('pegawai-hapus/' .$peg->id_pegawai); ?>" method="post" class="d-inline">
+                        <?= csrf_field(); ?>
+                          <input type="hidden" name="_method" value="DELETE">
+                          <button type="submit" class = "btn btn-danger btn-sm" onclick="return confirm('Apakah data ingin dihapus');"><i class="fas fa-trash-alt"></i>Hapus</button>
+                      </form>
+                      
                     </td>
                   </tr>
                   <?php endforeach; ?>   

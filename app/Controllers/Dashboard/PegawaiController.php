@@ -34,10 +34,11 @@ class PegawaiController extends BaseController
         }
         $rules = [
             'nip' => [
-                'rules' => 'required|min_length[18]',
+                'rules' => 'required|min_length[18]|is_unique[pegawai.nip]',
                 'errors' => [
                     'required' => 'nip tidak boleh kosong',
                     'min_length' => 'Minimal 18 karekter',
+                    'is_unique' => 'NIP sudah ada'
                 ],
             ],
             'nama' => [
@@ -80,8 +81,8 @@ class PegawaiController extends BaseController
     public function delete($id_pegawai)
     {
         // dd($id_pegawai);
-        $pegawai = $this->PegawaiModel->find($id_pegawai);
-        $this->PegawaiModel->delete($pegawai);
-        return redirect()->back();
+        // $pegawai = $this->PegawaiModel->find($id_pegawai);
+        $this->PegawaiModel->delete($id_pegawai);
+        return redirect()->back()->with('success','Data Berhasil hapus');
     }
 }
