@@ -20,7 +20,7 @@ $routes->set404Override();
 // where controller filters or CSRF protection are bypassed.
 // If you don't want to define all routes, please use the Auto Routing (Improved).
 // Set `$autoRoutesImproved` to true in `app/Config/Feature.php` and set the following to true.
-// $routes->setAutoRoute(false);
+$routes->setAutoRoute(true);
 
 /*
  * --------------------------------------------------------------------
@@ -43,7 +43,8 @@ $routes->delete('pegawai-hapus/(:num)', 'Dashboard\PegawaiController::delete/$1'
 // $routes->get('pegawai-hapus/(:num)','Dashboard\PegawaiController::delete/$1');
 // $routes->match(['get', 'post'], 'pegawai/tambah','Dashboard\PegawaiController::tambah');
 $routes->get('opd', 'Dashboard\OpdController::index');
-$routes->post('opd-create', 'Dashboard\OpdController::save');
+$routes->get('opd-form', 'Dashboard\OpdController::form');
+$routes->post('opd-save', 'Dashboard\OpdController::save');
 
 /*
  * --------------------------------------------------------------------

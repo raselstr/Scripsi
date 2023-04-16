@@ -7,40 +7,51 @@ helper(['form']);
 
 class OpdController extends BaseController
 {
+    public $title = 'OPD';
+    
+
     public function index()
     {
-        $data = [
-            'title' => 'OPD',
-            'opd'   => $this->OpdModel->findAll(),
-        ];
+        $data['title'] = $this->title;
+        $data['page'] = 'Data '.$this->title;
+        $opdmodel = new \App\Models\OpdModel();
+        $data['getData'] = $opdmodel->orderBy('tanggal_update','DESC')
+                                        ->findAll();
         return view('dashboard/opd/index', $data);
+    }
+
+
+     public function form($id='')
+    {
+        $opdmodel = new \App\Models\OpdModel();
+        $data['title'] = $this->title;
+        
+        if($id!='')
+        {
+            $getData = $opdmodel->asArray()->find($id);
+        }
+        else {
+            $getData = null;
+        }
+        $data['getData'] = $getData;
+        $data['page'] = 'Form ' . $this->title;
+        return view('dashboard/opd/FormView', $data);
     }
 
     public function save()
     {
-        $OpdModel = new \App\Models\OpdModel();
-        $save = $OpdModel->save($this->request->getVar());
-        // session()->getFlashdata('success','Data Berhasil disimpan');
-            
-
-        if(!$save){
-            //menampilkan data Old
-            session()->setFlashdata('hasForm',$this->request->getVar());
-
-            //menampilkan error validation model
-            session()->setFlashdata('validation',$OpdModel->errors());
-            return redirect()->to('opd'.$this->request->getVar('id'));
-        } else {
-            return redirect()->back()->with('success','Berhasil disimpan');
-        }
-
+        $opdmodel = new \App\Models\OpdModel();
+        $save = $opdmodel->save($this->request->getPost());
         // dd($save);
-
-        // $data = [
-        //     'title' => 'OPD',
-        //     'nama_opd' => $this->request->getVar('nama_opd'),
-        // ];
-        // $this->OpdModel->save($data);
-        // return redirect('opd');
+        if($save)
+        {
+            session()->setFlashData(['info' => 'success', 'message' => 'Sukses disimpan']);
+            return redirect()->to('opd');
+        }
+        else {
+            session()->setFlashdata('hasForm', $this->request->getPost());
+            session()->setFlashdata('validation', $opdmodel->errors());
+            return redirect()->to('opd'.$this->request->getPost('id'));
+        }
     }
 }

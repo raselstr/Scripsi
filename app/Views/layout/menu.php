@@ -60,7 +60,7 @@
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 Pegawai
                             </a>
-                            <a class="nav-link" href="<?= base_url('opd'); ?>">
+                            <a class="nav-link" href="<?= 'opd'?>">
                                 <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
                                 OPD
                             </a>
