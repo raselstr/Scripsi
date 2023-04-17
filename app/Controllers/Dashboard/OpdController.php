@@ -33,6 +33,7 @@ class OpdController extends BaseController
         else {
             $getData = null;
         }
+        // dd($getData);
         $data['getData'] = $getData;
         $data['page'] = 'Form ' . $this->title;
         return view('dashboard/opd/FormView', $data);
@@ -41,6 +42,7 @@ class OpdController extends BaseController
     public function save()
     {
         $opdmodel = new \App\Models\OpdModel();
+        $save = $opdmodel->save($this->request->getPost());
 
         if (! $this->request->is('post')) {
             return view('dashboard/opd/formView');

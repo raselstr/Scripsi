@@ -48,7 +48,7 @@
                     <td><?= $dinas->nama_opd; ?></td>
                     <td><?= date('d/m/Y H:i:s',strtotime($dinas->tanggal_update)); ?></td>
                     <td>
-                      <a href="" class="btn btn-success btn-sm"><i class="fas fa-edit"></i>Ubah</a>
+                      <a href="<?= site_url('opd-form/'.$dinas->id_opd); ?>" class="btn btn-success btn-sm"><i class="fas fa-edit"></i>Ubah</a>
                       <form action="<?= site_url('opd-hapus/' .$dinas->id_opd); ?>" method="post" class="d-inline">
                         <?= csrf_field(); ?>
                           <input type="hidden" name="_method" value="DELETE">

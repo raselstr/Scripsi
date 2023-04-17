@@ -1,6 +1,13 @@
 <?= $this->extend('layout/template'); ?>
 
 <?= $this->section('content'); ?>
+
+<?php
+    if($getData!= null)
+    {
+      extract($getData);
+    }
+?>
   
 <!-- Content -->
 <div id="layoutSidenav_content">
@@ -20,7 +27,7 @@
                   <div class="mb-3 row">
                     <label for="nama_opd" class="col-sm-2 col-form-label">Nama OPD</label>
                     <div class="col-sm-10">
-                      <input type="text" name="nama_opd" value="<?= old('nama_opd') ?>" class="form-control <?= (isset(validation_errors()['nama_opd'])) ? 'is-invalid' : null; ?>" >
+                      <input type="text" name="nama_opd" value="<?= $getData!=null ? $nama_opd : old('nama_opd') ?>" class="form-control <?= (isset(validation_errors()['nama_opd'])) ? 'is-invalid' : null; ?>" >
                           <div class="invalid-feedback">
                             <?= validation_show_error('nama_opd') ?>
                           </div>
