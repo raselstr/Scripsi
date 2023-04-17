@@ -41,17 +41,27 @@ class OpdController extends BaseController
     public function save()
     {
         $opdmodel = new \App\Models\OpdModel();
-        $save = $opdmodel->save($this->request->getPost());
-        // dd($save);
-        if($save)
-        {
-            session()->setFlashData(['info' => 'success', 'message' => 'Sukses disimpan']);
-            return redirect()->to('opd');
+
+        if (! $this->request->is('post')) {
+            return view('dashboard/opd/formView');
         }
-        else {
-            session()->setFlashdata('hasForm', $this->request->getPost());
-            session()->setFlashdata('validation', $opdmodel->errors());
-            return redirect()->to('opd'.$this->request->getPost('id'));
+
+        $rules = $opdmodel->getValidationRules();
+        $error = $opdmodel->getValidationMessages();
+
+        if (! $this->validate($rules,$error)){
+            return redirect()->back()->withInput();
         }
+
+        $data = $this->request->getPost(array_keys($rules));
+        // dd($data);
+        $opdmodel->save($data);
+        return redirect()->to('opd')->with('success','Data Berhasil disimpan');
+    }
+
+    public function delete($id_opd)
+    {
+        $this->OpdModel->delete($id_opd);
+        return redirect()->back()->with('success','Data Berhasil hapus');
     }
 }

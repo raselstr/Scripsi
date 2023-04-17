@@ -9,7 +9,7 @@
         <h1 class="mt-4"><?= esc($title); ?></h1>
         <ol class="breadcrumb mb-4">
             <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
-            <li class="breadcrumb-item active"><?= esc($title); ?></li>
+            <li class="breadcrumb-item active"><a href="opd"><?= esc($title); ?></a></li>
             <li class="breadcrumb-item active"><?= esc($page); ?></li>
         </ol>
         <div class="card mb-4">

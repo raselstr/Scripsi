@@ -10,7 +10,6 @@
       <ol class="breadcrumb mb-4">
         <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
         <li class="breadcrumb-item active"><?= esc($title); ?></li>
-        <li class="breadcrumb-item active"><?= esc($page); ?></li>
       </ol>
       <div class="card mb-4">
         <div class="card-header">
@@ -50,7 +49,11 @@
                     <td><?= date('d/m/Y H:i:s',strtotime($dinas->tanggal_update)); ?></td>
                     <td>
                       <a href="" class="btn btn-success btn-sm"><i class="fas fa-edit"></i>Ubah</a>
-                      <a href="" class="btn btn-danger btn-sm"><i class="fas fa-trash-alt"></i>Hapus</a>
+                      <form action="<?= site_url('opd-hapus/' .$dinas->id_opd); ?>" method="post" class="d-inline">
+                        <?= csrf_field(); ?>
+                          <input type="hidden" name="_method" value="DELETE">
+                          <button type="submit" class = "btn btn-danger btn-sm" onclick="return confirm('Apakah data ingin dihapus');"><i class="fas fa-trash-alt"></i>Hapus</button>
+                      </form>
                     </td>
                   </tr>
                   <?php endforeach; ?>   
@@ -60,35 +63,4 @@
           </div>
       </div>
   </main>
-
-
-  <!-- Modal -->
-<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Tambah OPD</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body">
-      <?= form_open('form') ?>
-        <div class="mb-3">
-            <label for="nama_opd" class="form-label">Nama OPD</label>
-            <input type="text" class="form-control" name="nama_opd" id="nama_opd" placeholder="Masukkan Nama OPD">
-                  <?php if(isset(session()->getFlashData('validation')['nama_opd'])) { ?>
-                    <div class="alert alert-danger">
-                        <?= session()->getFlashData('validation')['nama_opd'] ?>
-                    </div>
-                  <?php } ?>
-        
-          </div>
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-        <button type="submit" class="btn btn-primary">Simpan</button>
-      </div>
-      <?= form_close() ?>
-    </div>
-  </div>
-</div>
   <?= $this->endSection(); ?>

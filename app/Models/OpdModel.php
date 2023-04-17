@@ -12,7 +12,7 @@ class OpdModel extends Model
     protected $useAutoIncrement = true;
     // protected $insertID         = 0;
     protected $returnType       = 'object';
-    // protected $useSoftDeletes   = false;
+    protected $useSoftDeletes   = false;
     // protected $protectFields    = true;
     protected $allowedFields    = ['nama_opd'];
 
@@ -21,7 +21,7 @@ class OpdModel extends Model
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'tanggal_input';
     protected $updatedField  = 'tanggal_update';
-    // protected $deletedField  = 'deleted_at';
+    protected $deletedField  = 'tanggal_hapus';
 
     // Validation
     protected $validationRules      = [

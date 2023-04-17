@@ -45,6 +45,7 @@ $routes->delete('pegawai-hapus/(:num)', 'Dashboard\PegawaiController::delete/$1'
 $routes->get('opd', 'Dashboard\OpdController::index');
 $routes->get('opd-form', 'Dashboard\OpdController::form');
 $routes->post('opd-save', 'Dashboard\OpdController::save');
+$routes->delete('opd-hapus/(:num)', 'Dashboard\OpdController::delete/$1');
 
 /*
  * --------------------------------------------------------------------

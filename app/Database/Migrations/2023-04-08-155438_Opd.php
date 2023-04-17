@@ -27,6 +27,10 @@ class Opd extends Migration
                 'type' => 'datetime',
 
             ],
+            'tanggal_hapus' => [
+                'type' => 'datetime',
+
+            ],
         ]);
         $this->forge->addKey('id_opd', true);
         $this->forge->createTable('opd');
