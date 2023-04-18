@@ -25,6 +25,7 @@
               <?= form_open('opd-save'); ?>
                 <?= csrf_field() ?>
                   <div class="mb-3 row">
+                    <input type="hidden" name="id_opd" value="<?= $getData!=null ? $id_opd : old('nama_opd') ?>">
                     <label for="nama_opd" class="col-sm-2 col-form-label">Nama OPD</label>
                     <div class="col-sm-10">
                       <input type="text" name="nama_opd" value="<?= $getData!=null ? $nama_opd : old('nama_opd') ?>" class="form-control <?= (isset(validation_errors()['nama_opd'])) ? 'is-invalid' : null; ?>" >

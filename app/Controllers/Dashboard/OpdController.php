@@ -42,24 +42,55 @@ class OpdController extends BaseController
     public function save()
     {
         $opdmodel = new \App\Models\OpdModel();
-        $save = $opdmodel->save($this->request->getPost());
-
+        
         if (! $this->request->is('post')) {
             return view('dashboard/opd/formView');
         }
-
+        
         $rules = $opdmodel->getValidationRules();
         $error = $opdmodel->getValidationMessages();
-
+        
         if (! $this->validate($rules,$error)){
             return redirect()->back()->withInput();
         }
 
-        $data = $this->request->getPost(array_keys($rules));
-        // dd($data);
-        $opdmodel->save($data);
-        return redirect()->to('opd')->with('success','Data Berhasil disimpan');
+        $save = $opdmodel->save($this->request->getPost());
+        if ($save){
+            return redirect()->to('opd')->with('success','Data Berhasil di Simpan');
+        } else {
+           
+            $opdmodel->save($this->request->getPost('id_opd'));
+        }
+
+        // $data = $this->request->getPost(array_keys($rules));
+        // // dd($data);
+        // $opdmodel->save($data);
     }
+
+   
+
+
+    // public function save()
+    // {
+    //     $opdmodel = new \App\Models\OpdModel();
+    //     // $save = $opdmodel->save($this->request->getPost());
+
+    //     if (! $this->request->is('post')) {
+    //         return view('dashboard/opd/formView');
+    //     }
+
+    //     $rules = $opdmodel->getValidationRules();
+    //     $error = $opdmodel->getValidationMessages();
+
+    //     if (! $this->validate($rules,$error)){
+    //         return redirect()->back()->withInput();
+    //     }
+
+    //     $data = $this->request->getPost(array_keys($rules));
+    //     // dd($data);
+    //     $opdmodel->save($data);
+    //     return redirect()->to('opd')->with('success','Data Berhasil disimpan');
+    // }
 
     public function delete($id_opd)
     {
