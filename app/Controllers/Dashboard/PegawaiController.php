@@ -22,15 +22,24 @@ class PegawaiController extends BaseController
 
     protected $helpers = ['form'];
 
-    public function pegawai_form()
+    public function pegawai_form($id='')
     {
+        $pegawaimodel = new \App\Models\PegawaiModel();
+
+        if($id!='')
+        {
+            $getData = $pegawaimodel->asArray()->find($id);
+        }
+        else {
+            $getData = null;
+        }
+
+        $data['getData'] = $getData;
         
-        $judul = [
-            'title' => 'Form Tambah Pegawai',
-        ];
+        $data['title'] = 'Form Tambah Pegawai';
 
         if (! $this->request->is('post')) {
-            return view('dashboard/pegawai/pegawai_form', $judul);
+            return view('dashboard/pegawai/pegawai_form', $data);
         }
         $rules = [
             'nip' => [
@@ -60,10 +69,16 @@ class PegawaiController extends BaseController
             return redirect()->back()->withInput();
         }
         
-
-        $data = $this->request->getPost(array_keys($rules));
-        $this->PegawaiModel->save($data);
-        return redirect()->to('pegawai')->with('success','Data Berhasil disimpan');
+        $save = $pegawaimodel->save($this->request->getPost());
+        if ($save){
+            return redirect()->to('pegawai')->with('success','Data Berhasil di Simpan');
+        } else {
+           
+            $pegawaimodel->save($this->request->getPost('id_pegawai'));
+        } 
+        // $data = $this->request->getPost(array_keys($rules));
+        // $this->PegawaiModel->save($data);
+        // return redirect()->to('pegawai')->with('success','Data Berhasil disimpan');
 
     }
     

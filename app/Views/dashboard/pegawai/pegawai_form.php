@@ -1,7 +1,14 @@
 <?= $this->extend('layout/template'); ?>
 
 <?= $this->section('content'); ?>
-  
+
+<?php
+    if($getData!= null)
+    {
+      extract($getData);
+    }
+?>
+
 <!-- Content -->
 <div id="layoutSidenav_content">
   <main>
@@ -19,9 +26,10 @@
               <?= form_open('pegawai-form'); ?>
                 <?= csrf_field() ?>
                   <div class="mb-3 row">
+                    <input type="hidden" name="id_pegawai" value="<?= $getData!=null ? $id_pegawai : old('id_pegawai') ?>">
                     <label for="nip" class="col-sm-2 col-form-label">NIP</label>
                     <div class="col-sm-10">
-                      <input type="text" name="nip" value="<?= old('nip') ?>" class="form-control <?= (isset(validation_errors()['nip'])) ? 'is-invalid' : null; ?>" >
+                      <input type="text" name="nip" value="<?= $getData!=null ? $nip : old('nama_opd') ?>" class="form-control <?= (isset(validation_errors()['nip'])) ? 'is-invalid' : null; ?>" >
                           <div class="invalid-feedback">
                             <?= validation_show_error('nip') ?>
                           </div>
@@ -30,7 +38,7 @@
                   <div class="mb-3 row">
                     <label for="nama" class="col-sm-2 col-form-label">Nama</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control <?= isset(validation_errors()['nama']) ? 'is-invalid' : null; ?>" name="nama" value="<?= old('nama') ?>">
+                        <input type="text" class="form-control <?= isset(validation_errors()['nama']) ? 'is-invalid' : null; ?>" name="nama" value="<?= $getData!=null ? $nama : old('nama') ?>">
                           <div class="invalid-feedback">
                             <?= validation_show_error('nama'); ?>
                           </div>
@@ -39,7 +47,7 @@
                   <div class="mb-3 row">
                     <label for="eselon" class="col-sm-2 col-form-label">Eselon</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control <?= isset(validation_errors()['eselon']) ? 'is-invalid' : null; ?>" name="eselon" value="<?= old('eselon') ?>">
+                        <input type="text" class="form-control <?= isset(validation_errors()['eselon']) ? 'is-invalid' : null; ?>" name="eselon" value="<?= $getData!=null ? $eselon : old('eselon') ?>">
                           <div class="invalid-feedback">
                             <?= validation_show_error('eselon'); ?>
                           </div>
