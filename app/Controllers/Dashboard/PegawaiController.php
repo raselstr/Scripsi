@@ -62,6 +62,16 @@ class PegawaiController extends BaseController
                     'required' => 'Eselon tidak boleh kosong',
                 ],
             ],
+            'foto' => [
+                // 'label' => 'Image File',
+                'rules' => [
+                    'uploaded[foto]',
+                    'is_image[foto]',
+                    'mime_in[foto,image/jpg,image/jpeg,image/gif,image/png,image/webp]',
+                    'max_size[foto,100]',
+                    'max_dims[foto,1024,768]',
+                ],
+            ],
             
         ];
 

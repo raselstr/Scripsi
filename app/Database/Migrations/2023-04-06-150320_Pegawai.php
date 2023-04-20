@@ -28,13 +28,19 @@ class Pegawai extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => '100',
             ],
+            'foto' => [
+                'type' => 'VARCHAR',
+                'constraint' => '100',
+            ],
             'tanggal_input' => [
                 'type' => 'datetime',
                 
             ],
             'tanggal_update' => [
                 'type' => 'datetime',
-
+            ],
+            'tanggal_hapus' => [
+                'type' => 'datetime',
             ],
         ]);
         $this->forge->addKey('id_pegawai', true);

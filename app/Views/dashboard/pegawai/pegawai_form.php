@@ -18,12 +18,12 @@
             <li class="breadcrumb-item"><a href="/">Dashboard</a></li>
             <li class="breadcrumb-item active"><?= esc($title); ?></li>
         </ol>
-        <div class="card mb-4">
+        <div class="card mb-4 ">
             <div class="card-body">
               
                
            
-              <?= form_open('pegawai-form'); ?>
+              <?= form_open_multipart('pegawai-form'); ?>
                 <?= csrf_field() ?>
                   <div class="mb-3 row">
                     <input type="hidden" name="id_pegawai" value="<?= $getData!=null ? $id_pegawai : old('id_pegawai') ?>">
@@ -47,10 +47,19 @@
                   <div class="mb-3 row">
                     <label for="eselon" class="col-sm-2 col-form-label">Eselon</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control <?= isset(validation_errors()['eselon']) ? 'is-invalid' : null; ?>" name="eselon" value="<?= $getData!=null ? $eselon : old('eselon') ?>">
+                        <input type="text" class="form-control <?= isset(validation_errors()['eselon']) ? 'is-invalid' : null; ?>" name="eselon" value="<?= $getData!=null ? $eselon : old('eselon') ?>" >
                           <div class="invalid-feedback">
                             <?= validation_show_error('eselon'); ?>
                           </div>
+                      </div>
+                  </div>
+                  <div class="mb-3 row">
+                    <label for="" class="col-sm-2 col-form-label" >Foto</label>
+                      <div class="col-sm-10">
+                        <input type="file" name="foto" size="20" class="form-control" id="foto">
+                        <div class="invalid-feedback">
+                          <?= validation_show_error('foto'); ?>
+                        </div>
                       </div>
                   </div>
                   <div class="modal-footer">

@@ -12,16 +12,16 @@ class PegawaiModel extends Model
     protected $useAutoIncrement = true;
     // protected $insertID         = 0;
     protected $returnType       = 'object';
-    // protected $useSoftDeletes   = false;
+    protected $useSoftDeletes   = true;
     // protected $protectFields    = true;
-    protected $allowedFields    = ['nip','nama','eselon'];
+    protected $allowedFields    = ['nip','nama','eselon', 'foto'];
 
     // Dates
     protected $useTimestamps = true;
     protected $dateFormat    = 'datetime';
     protected $createdField  = 'tanggal_input';
     protected $updatedField  = 'tanggal_update';
-    // protected $deletedField  = 'deleted_at';
+    protected $deletedField  = 'tanggal_hapus';
 
     // Validation
     // protected $validationRules      = [
