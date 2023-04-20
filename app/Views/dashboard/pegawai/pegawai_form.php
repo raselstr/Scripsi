@@ -29,7 +29,7 @@
                     <input type="hidden" name="id_pegawai" value="<?= $getData!=null ? $id_pegawai : old('id_pegawai') ?>">
                     <label for="nip" class="col-sm-2 col-form-label">NIP</label>
                     <div class="col-sm-10">
-                      <input type="text" name="nip" value="<?= $getData!=null ? $nip : old('nama_opd') ?>" class="form-control <?= (isset(validation_errors()['nip'])) ? 'is-invalid' : null; ?>" >
+                      <input type="text" name="nip" value="<?= $getData!=null ? $nip : old('nip') ?>" class="form-control <?= (isset(validation_errors()['nip'])) ? 'is-invalid' : null; ?>" maxlength="18">
                           <div class="invalid-feedback">
                             <?= validation_show_error('nip') ?>
                           </div>
