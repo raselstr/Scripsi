@@ -37,7 +37,7 @@ class Upload extends BaseController
         $img = $this->request->getFile('userfile');
 
         if (! $img->hasMoved()) {
-            $filepath = WRITEPATH . 'upload/' . $img->store();
+            $filepath = WRITEPATH . 'uploads/' . $img->store();
 
             $data = ['uploaded_fileinfo' => new File($filepath)];
 
