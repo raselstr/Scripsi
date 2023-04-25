@@ -81,16 +81,6 @@ class PegawaiController extends BaseController
         if (! $this->validate($rules)){
             return redirect()->back()->withInput();
         }
-
-        $data = $this->request->getPost();
-        
-        $file = $this->getFile('foto');
-        if(!$file->hasMoved()){
-            $newName = $file->getRandomName();
-            $file->move(FCPATH, 'upload'. $newName);
-            dd($file);
-            
-        }
         
         $save = $pegawaimodel->save($this->request->getPost());
         if ($save){

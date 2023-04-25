@@ -49,6 +49,9 @@ $routes->get('opd-form/(:segment)', 'Dashboard\OpdController::form/$1');
 $routes->post('opd-save', 'Dashboard\OpdController::save');
 $routes->delete('opd-hapus/(:num)', 'Dashboard\OpdController::delete/$1');
 
+
+$routes->get('upload', 'Upload::index');          // Add this line.
+$routes->post('upload/upload', 'Upload::upload'); // Add this line.
 /*
  * --------------------------------------------------------------------
  * Additional Routing
