@@ -63,7 +63,7 @@ class PegawaiController extends BaseController
                 ],
             ],
             'foto' => [
-                // 'label' => 'Image File',
+                'label' => 'Image File',
                 'rules' => [
                     'uploaded[foto]',
                     'is_image[foto]',
@@ -83,16 +83,19 @@ class PegawaiController extends BaseController
         }
 
         $data = $this->request->getPost();
+ 
+        //upload foto
+        $file = $this->request->getFile('foto');
         
-        $file = $this->getFile('foto');
-        if(!$file->hasMoved()){
-            $newName = $file->getRandomName();
-            $file->move(FCPATH, 'upload'. $newName);
-            dd($file);
-            
-        }
+        if($file->isValid() && ! $file->hasMoved()){
+            $namafoto = $file->getRandomName();
+            $file->move(FCPATH, 'upload/'. $namafoto);
+            $data['foto'] = $namafoto;    
+        }    
         
-        $save = $pegawaimodel->save($this->request->getPost());
+        
+        $save = $pegawaimodel->save($data);
+
         if ($save){
             return redirect()->to('pegawai')->with('success','Data Berhasil di Simpan');
         } else {
@@ -105,22 +108,13 @@ class PegawaiController extends BaseController
 
     }
     
-    public function edit($id)
-    {
-        $data = $this->PegawaiModel->getDataById($id_pegawai);
-        return view('edit_form', $data);
-    }
-
-    public function update($id)
-    {
-
-    }
-
     public function delete($id_pegawai)
     {
+        $pegawaimodel = new \App\Models\PegawaiModel();
         // dd($id_pegawai);
         // $pegawai = $this->PegawaiModel->find($id_pegawai);
-        $this->PegawaiModel->delete($id_pegawai);
+    //    $pegawaimodel->delete($id_pegawai);
+       $pegawaimodel->delete($id_pegawai);
         return redirect()->back()->with('success','Data Berhasil hapus');
     }
 }

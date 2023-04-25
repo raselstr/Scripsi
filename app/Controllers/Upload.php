@@ -20,10 +20,10 @@ class Upload extends BaseController
             'userfile' => [
                 'label' => 'Image File',
                 'rules' => [
-                    'uploaded[userfile]',
-                    'is_image[userfile]',
-                    'mime_in[userfile,image/jpg,image/jpeg,image/gif,image/png,image/webp]',
-                    'max_size[userfile,3000]',
+                    'uploaded[gambar]',
+                    'is_image[gambar]',
+                    'mime_in[gambar,image/jpg,image/jpeg,image/gif,image/png,image/webp]',
+                    'max_size[gambar,3000]',
                     // 'max_dims[userfile,1024,768]',
                 ],
             ],
@@ -34,7 +34,7 @@ class Upload extends BaseController
             return view('upload_form', $data);
         }
 
-        $img = $this->request->getFile('userfile');
+        $img = $this->request->getFile('gambar');
 
         if (! $img->hasMoved()) {
             $filepath = WRITEPATH . 'uploads/' . $img->store();

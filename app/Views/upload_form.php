@@ -10,7 +10,7 @@
 <?php endforeach ?>
 
 <?= form_open_multipart('upload/upload') ?>
-    <input type="file" name="userfile" size="20">
+    <input type="file" name="gambar" size="20">
     <br><br>
     <input type="submit" value="upload">
 </form>
