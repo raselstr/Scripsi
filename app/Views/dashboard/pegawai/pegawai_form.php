@@ -56,7 +56,7 @@
                   <div class="mb-3 row">
                     <label for="" class="col-sm-2 col-form-label" >Foto</label>
                       <div class="col-sm-10">
-                        <input type="file" name="foto" size="20" class="form-control <?= isset(validation_errors()['foto']) ? 'is-invalid' : null; ?>" id="foto" value="<?= $getData!=null ? $foto : old('eselon') ?>" >>
+                        <input type="file" name="foto" size="20" class="form-control <?= isset(validation_errors()['foto']) ? 'is-invalid' : null; ?>" id="foto" value="<?= $getData!=null ? $foto : old('foto') ?>" >
                         <div class="invalid-feedback">
                           <?= validation_show_error('foto'); ?>
                         </div>

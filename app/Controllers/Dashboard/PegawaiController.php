@@ -22,7 +22,7 @@ class PegawaiController extends BaseController
 
     protected $helpers = ['form'];
 
-    public function pegawai_form($id='')
+    public function pegawai_form($id=null)
     {
         $pegawaimodel = new \App\Models\PegawaiModel();
 
@@ -99,8 +99,8 @@ class PegawaiController extends BaseController
         if ($save){
             return redirect()->to('pegawai')->with('success','Data Berhasil di Simpan');
         } else {
-           
-            $pegawaimodel->save($this->request->getPost('id_pegawai'));
+           return redirect()->to('pegawai'.$this->request->getPost('id_pegawai'));
+            // $pegawaimodel->save($this->request->getPost('id_pegawai'));
         } 
         // $data = $this->request->getPost(array_keys($rules));
         // $this->PegawaiModel->save($data);
