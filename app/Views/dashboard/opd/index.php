@@ -16,19 +16,32 @@
           <i class="fas fa-table me-1"></i>
           <?= esc($title); ?>
         </div>
+        
         <div class="card-body">
-          <div class="card col-4 mb-4">
-            <!-- Button trigger modal
-            <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Tambah OPD
-            </button> -->
-         
-            <a class="btn btn-primary" href="<?= 'opd-form'; ?>"><?= esc($title); ?></a>
-          
+          <div class="row">
+            <div class="col-xl-6 col-mb-12">
+              <a class="btn btn-primary" href="<?= 'opd-form'; ?>"><i class="fa-solid fa-circle-plus"></i><?= " Tambah ".esc($title); ?></a>
+              <a class="btn btn-primary" href="<?= 'opd-export'; ?>"><i class="fa-solid fa-file-excel"></i> Export Excel</a>
+                <button class="btn btn-primary dropdown-toggle" type="button" id="dropdownMenuButton1" data-bs-toggle="dropdown" aria-expanded="false">
+                  <i class="fa-solid fa-file-arrow-up"></i> Import Data
+                </button>
+                <ul class="dropdown-menu" aria-labelledby="dropdownMenuButton1">
+                  <li><a class="dropdown-item" href="<?= base_url('DataOpd.xlsx'); ?>"><i class="fa-solid fa-file-excel"></i> Tempate Excel</a></li>
+                  <li><a class="dropdown-item" href="" data-bs-toggle="modal" data-bs-target="#exampleModal"><i class="fa-regular fa-file-excel"></i> Upload File</a></li>
+                </ul>
+            </div>
           </div>
+
+          <div class="card-body"></div>
+
           <?php if(session('success')): ?>
             <div class="alert alert-success" role="alert">
               <?= session('success'); ?>
+            </div>
+          <?php endif; ?>
+          <?php if(session('error')): ?>
+            <div class="alert alert-danger" role="alert">
+              <?= session('error'); ?>
             </div>
           <?php endif; ?>
           <table id="datatablesSimple">
@@ -36,6 +49,7 @@
                   <tr>
                       <th>No</th>
                       <th>NAMA OPD</th>
+                      <th>KODE OPD</th>
                       <th>TANGGAL UPDATE</th>
                       <th>Actions</th>
                   </tr>
@@ -46,6 +60,7 @@
                   <tr>
                     <td><?= $no++; ?></td>
                     <td><?= $dinas->nama_opd; ?></td>
+                    <td><?= $dinas->kode_opd; ?></td>
                     <td><?= date('d/m/Y H:i:s',strtotime($dinas->tanggal_update)); ?></td>
                     <td>
                       <a href="<?= site_url('opd-form/'.$dinas->id_opd); ?>" class="btn btn-success btn-sm"><i class="fas fa-edit"></i>Ubah</a>
@@ -63,4 +78,27 @@
           </div>
       </div>
   </main>
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Import File</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <form action="<?= site_url('opd-import'); ?>" method="post" enctype="multipart/form-data">
+          <div class="modal-body">
+            <?= csrf_field() ?>
+            <input type="file" name="file_excel" id="file_excel" class="form-control" required>
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Batal</button>
+            <button type="submit" class="btn btn-primary">Upload</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
   <?= $this->endSection(); ?>

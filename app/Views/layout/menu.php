@@ -53,27 +53,27 @@
 
                         <div class="sb-sidenav-menu-heading">Master Data</div>
                             <a class="nav-link" href="#">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-user"></i></div>
                                 User
                             </a>
-                            <a class="nav-link" href="<?= base_url('pegawai'); ?>">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                            <a class="nav-link" href="<?= site_url('pegawai'); ?>">
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-users"></i></div>
                                 Pegawai
                             </a>
                             <a class="nav-link" href="<?= 'opd'?>">
-                                <div class="sb-nav-link-icon"><i class="fas fa-chart-area"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-city"></i></div>
                                 OPD
                             </a>
                             <a class="nav-link collapsed" href="#" data-bs-toggle="collapse" data-bs-target="#collapseLayouts" aria-expanded="false" aria-controls="collapseLayouts">
-                                <div class="sb-nav-link-icon"><i class="fas fa-columns"></i></div>
+                                <div class="sb-nav-link-icon"><i class="fa-solid fa-book-open-reader"></i></div>
                                 Peraturan Bupati
                                 <div class="sb-sidenav-collapse-arrow"><i class="fas fa-angle-down"></i></div>
                             </a>
                             <div class="collapse" id="collapseLayouts" aria-labelledby="headingOne" data-bs-parent="#sidenavAccordion">
                                 <nav class="sb-sidenav-menu-nested nav">
-                                    <a class="nav-link" href="<?= base_url('#'); ?>">Penginapan</a>
-                                    <a class="nav-link" href="<?= base_url('#'); ?>">Uang Harian</a>
-                                    <a class="nav-link" href="<?= base_url('#'); ?>">Transport</a>
+                                    <a class="nav-link" href="<?= site_url('#'); ?>"><i class="fa-solid fa-book m-2"></i>Penginapan</a>
+                                    <a class="nav-link" href="<?= site_url('#'); ?>"><i class="fa-solid fa-book m-2"></i>Uang Harian</a>
+                                    <a class="nav-link" href="<?= site_url('#'); ?>"><i class="fa-solid fa-book m-2"></i>Transport</a>
                                 </nav>
                             </div>
                              </div>

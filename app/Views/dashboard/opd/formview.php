@@ -34,6 +34,15 @@
                           </div>
                     </div>
                   </div>
+                  <div class="mb-3 row">
+                    <label for="kode_opd" class="col-sm-2 col-form-label">Kode OPD</label>
+                    <div class="col-sm-10">
+                      <input type="text" name="kode_opd" value="<?= $getData!=null ? $kode_opd : old('kode_opd') ?>" class="form-control <?= (isset(validation_errors()['kode_opd'])) ? 'is-invalid' : null; ?>" >
+                          <div class="invalid-feedback">
+                            <?= validation_show_error('kode_opd') ?>
+                          </div>
+                    </div>
+                  </div>
                   <div class = "">
                     <button type="submit" class="btn btn-primary">Simpan</button>
                     <button type="reset" class="btn btn-secondary">Batal</button>

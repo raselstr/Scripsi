@@ -12,9 +12,9 @@ class OpdModel extends Model
     protected $useAutoIncrement = true;
     // protected $insertID         = 0;
     protected $returnType       = 'object';
-    protected $useSoftDeletes   = false;
+    protected $useSoftDeletes   = true;
     // protected $protectFields    = true;
-    protected $allowedFields    = ['nama_opd'];
+    protected $allowedFields    = ['nama_opd','kode_opd'];
 
     // Dates
     protected $useTimestamps = true;
@@ -26,10 +26,15 @@ class OpdModel extends Model
     // Validation
     protected $validationRules      = [
         'nama_opd' => 'required|min_length[5]',
+        'kode_opd' => 'required|min_length[5]',
     ];
     protected $validationMessages   = [
         'nama_opd' => [
             'required' => 'Nama OPD tidak boleh kosong',
+            'min_length' => 'Harus lebih dari 5 karakter',
+        ],
+        'kode_opd' => [
+            'required' => 'Kode OPD tidak boleh kosong',
             'min_length' => 'Harus lebih dari 5 karakter',
         ],
     ];

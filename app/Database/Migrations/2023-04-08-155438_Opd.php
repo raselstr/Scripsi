@@ -19,6 +19,10 @@ class Opd extends Migration
                     'type' => 'VARCHAR',
                     'constraint' => '100',
             ],
+            'kode_opd' => [
+                    'type' => 'VARCHAR',
+                    'constraint' => '100',
+            ],
             'tanggal_input' => [
                 'type' => 'datetime',
                 

@@ -48,6 +48,8 @@ $routes->get('opd-form', 'Dashboard\OpdController::form');
 $routes->get('opd-form/(:segment)', 'Dashboard\OpdController::form/$1');
 $routes->post('opd-save', 'Dashboard\OpdController::save');
 $routes->delete('opd-hapus/(:num)', 'Dashboard\OpdController::delete/$1');
+$routes->get('opd-export', 'Dashboard\OpdController::export');
+$routes->post('opd-import', 'Dashboard\OpdController::import');
 
 
 $routes->get('upload', 'Upload::index');          // Add this line.
