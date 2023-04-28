@@ -186,7 +186,7 @@ class OpdController extends BaseController
                     'nama_opd' => $value[1],
                     'kode_opd' => $value[2],
                 ];
-                $this->OpdModel->insert($data);
+                $opdmodel->insert($data);
             }
             return redirect()->back()->with('success','File Berhasil di Import');
 
