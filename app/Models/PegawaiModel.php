@@ -14,7 +14,7 @@ class PegawaiModel extends Model
     protected $returnType       = 'object';
     protected $useSoftDeletes   = true;
     // protected $protectFields    = true;
-    protected $allowedFields    = ['nip','nama','eselon', 'foto'];
+    protected $allowedFields    = ['nip','nama','eselon', 'foto', 'id_opd'];
 
     // Dates
     protected $useTimestamps = true;
