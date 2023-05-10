@@ -14,7 +14,7 @@ class PegawaiController extends BaseController
         $data = [
         
         'title' => 'Data Pegawai',
-        'pegawai' => $this->PegawaiModel->findAll(),
+        'pegawai' => $this->PegawaiModel->getAllquery(),
         ];
 
         return view('dashboard/pegawai/index', $data);
@@ -28,7 +28,8 @@ class PegawaiController extends BaseController
 
         if($id!='')
         {
-            $getData = $pegawaimodel->asArray()->find($id);
+            $getData = $pegawaimodel->asArray()->getAllquery($id);
+            
         }
         else {
             $getData = null;

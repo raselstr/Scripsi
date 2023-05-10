@@ -32,8 +32,9 @@
                       <th>NIP</th>
                       <th>Nama</th>
                       <th>Eselon</th>
-                      <th>OPD</th>
                       <th>tanggal Update</th>
+                      <th>OPD</th>
+                      <th>Foto</th>
                       <th width="10%">Actions</th>
                   </tr>
               </thead>
@@ -45,8 +46,13 @@
                     <td><?= $peg->nip; ?></td>
                     <td><?= $peg->nama; ?></td>
                     <td><?= $peg->eselon; ?></td>
-                    <td><?= $peg->nama_opd; ?></td>
                     <td><?= date('d/m/Y H:i:s',strtotime($peg->tanggal_update)); ?></td>
+                    <td><?= $peg->id_opd; ?></td>
+                    <td>
+                      <img src="/upload/<?= $peg->foto; ?>" alt="" width="100px">
+                      <?= $peg->foto; ?>
+                    </td>
+
                     <td>
                       <a href="<?= site_url('pegawai-form/'.$peg->id_pegawai); ?>" class="btn btn-success btn-sm"><i class="fas fa-edit"></i>Ubah</a>
                       <form action="<?= site_url('pegawai-hapus/' .$peg->id_pegawai); ?>" method="post" class="d-inline">
@@ -60,8 +66,8 @@
                   <?php endforeach; ?>   
               </tbody>
           </table>
-        </div>
+              </div>
+          </div>
       </div>
-    </div>
   </main>
   <?= $this->endSection(); ?>

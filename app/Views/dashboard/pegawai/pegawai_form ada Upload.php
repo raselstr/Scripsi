@@ -54,18 +54,12 @@
                       </div>
                   </div>
                   <div class="mb-3 row">
-                    <label for="eselon" class="col-sm-2 col-form-label">Eselon</label>
-                    <div class="col-sm-10">
-                        <input type="text" class="form-control <?= isset(validation_errors()['eselon']) ? 'is-invalid' : null; ?>" name="eselon" value="<?= $getData!=null ? $eselon : old('eselon') ?>" >
-                        <select name="" class="form-control">
-                          <option value="" hidden></option>
-                          <?php foreach ($getData as $key => $value) : ?>
-                            <option value="<?= $value->$id_opd; ?>"><?= $value->$nama_opd; ?></option>
-                          <?php endforeach; ?>
-                        </select>
-                          <div class="invalid-feedback">
-                            <?= validation_show_error('eselon'); ?>
-                          </div>
+                    <label for="" class="col-sm-2 col-form-label" >Foto</label>
+                      <div class="col-sm-10">
+                        <input type="file" name="foto" size="20" class="form-control <?= isset(validation_errors()['foto']) ? 'is-invalid' : null; ?>" id="foto" value="<?= $getData!=null ? $foto : old('foto') ?>" >
+                        <div class="invalid-feedback">
+                          <?= validation_show_error('foto'); ?>
+                        </div>
                       </div>
                   </div>
                   <div class="modal-footer">

@@ -28,10 +28,10 @@ class Pegawai extends Migration
                 'type' => 'VARCHAR',
                 'constraint' => '100',
             ],
-            'foto' => [
-                'type' => 'VARCHAR',
-                'constraint' => '100',
-            ],
+            // 'foto' => [
+            //     'type' => 'VARCHAR',
+            //     'constraint' => '100',
+            // ],
             'id_opd' => [
                     'type' => 'INT',
                     'constraint' => 5,

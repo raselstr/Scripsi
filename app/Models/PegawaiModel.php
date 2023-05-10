@@ -14,7 +14,7 @@ class PegawaiModel extends Model
     protected $returnType       = 'object';
     protected $useSoftDeletes   = true;
     // protected $protectFields    = true;
-    protected $allowedFields    = ['nip','nama','eselon', 'foto', 'id_opd'];
+    protected $allowedFields    = ['nip','nama','eselon', 'id_opd'];
 
     // Dates
     protected $useTimestamps = true;
@@ -48,4 +48,15 @@ class PegawaiModel extends Model
 //     protected $afterFind      = [];
 //     protected $beforeDelete   = [];
 //     protected $afterDelete    = [];
+
+
+
+    function getAllquery()
+    {
+        $builder = $this->db->table('pegawai');
+        $builder->join('opd','opd.id_opd = pegawai.id_opd');
+        $query = $builder->get();
+        return $query->getResult();
+
+    }
 }
