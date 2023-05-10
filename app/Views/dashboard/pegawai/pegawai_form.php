@@ -23,7 +23,7 @@
               
                
            
-              <?= form_open_multipart('pegawai-form'); ?>
+              <?= form_open('pegawai-form'); ?>
                 <?= csrf_field() ?>
                   <div class="mb-3 row">
                     <input type="hidden" name="id_pegawai" value="<?= $getData!=null ? $id_pegawai : old('id_pegawai') ?>">
@@ -54,18 +54,16 @@
                       </div>
                   </div>
                   <div class="mb-3 row">
-                    <label for="eselon" class="col-sm-2 col-form-label">Eselon</label>
+                    <label for="eselon" class="col-sm-2 col-form-label">OPD</label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control <?= isset(validation_errors()['eselon']) ? 'is-invalid' : null; ?>" name="eselon" value="<?= $getData!=null ? $eselon : old('eselon') ?>" >
-                        <select name="" class="form-control">
+           
+                        <select name="id_opd" class="form-control">
                           <option value="" hidden></option>
-                          <?php foreach ($getData as $key => $value) : ?>
-                            <option value="<?= $value->$id_opd; ?>"><?= $value->$nama_opd; ?></option>
+                          <?php foreach ($opdarray as $key => $value) : ?>
+                            <option value="<?= $value->id_opd; ?>"><?= $value->nama_opd; ?></option>
                           <?php endforeach; ?>
                         </select>
-                          <div class="invalid-feedback">
-                            <?= validation_show_error('eselon'); ?>
-                          </div>
+         
                       </div>
                   </div>
                   <div class="modal-footer">

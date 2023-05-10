@@ -55,7 +55,7 @@ class PegawaiModel extends Model
     {
         $builder = $this->db->table('pegawai');
         $builder->join('opd','opd.id_opd = pegawai.id_opd');
-        $query = $builder->get();
+        $query = $builder->where('pegawai.tanggal_hapus',null)->get();
         return $query->getResult();
 
     }

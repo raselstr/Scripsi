@@ -2,6 +2,7 @@
 
 namespace App\Controllers\Dashboard;
 
+use App\Models\OpdModel;
 use App\Controllers\BaseController;
 
 
@@ -25,10 +26,11 @@ class PegawaiController extends BaseController
     public function pegawai_form($id=null)
     {
         $pegawaimodel = new \App\Models\PegawaiModel();
+        $opdmodel = new \App\Models\OpdModel();
 
         if($id!='')
         {
-            $getData = $pegawaimodel->asArray()->getAllquery($id);
+            $getData = $pegawaimodel->asArray()->find($id);
             
         }
         else {
@@ -36,6 +38,7 @@ class PegawaiController extends BaseController
         }
 
         $data['getData'] = $getData;
+        $data['opdarray'] = $opdmodel->findAll();
         
         $data['title'] = 'Form Tambah Pegawai';
 
@@ -63,19 +66,25 @@ class PegawaiController extends BaseController
                     'required' => 'Eselon tidak boleh kosong',
                 ],
             ],
-            'foto' => [
-                'label' => 'Image File',
-                'rules' => [
-                    'uploaded[foto]',
-                    'is_image[foto]',
-                    'mime_in[foto,image/jpg,image/jpeg,image/gif,image/png,image/webp]',
-                    'max_size[foto,100]',
-                    'max_dims[foto,1024,768]',
-                ],
+            'id_opd' => [
+                'rules' => 'required',
                 'errors' => [
-                    'uploaded' => 'Data harus diupload',
-                ]
+                    'required' => 'OPD tidak boleh kosong',
+                ],
             ],
+            // 'foto' => [
+            //     'label' => 'Image File',
+            //     'rules' => [
+            //         'uploaded[foto]',
+            //         'is_image[foto]',
+            //         'mime_in[foto,image/jpg,image/jpeg,image/gif,image/png,image/webp]',
+            //         'max_size[foto,100]',
+            //         'max_dims[foto,1024,768]',
+            //     ],
+            //     'errors' => [
+            //         'uploaded' => 'Data harus diupload',
+            //     ]
+            // ],
             
         ];
 
@@ -86,13 +95,13 @@ class PegawaiController extends BaseController
         $data = $this->request->getPost();
  
         //upload foto
-        $file = $this->request->getFile('foto');
+        // $file = $this->request->getFile('foto');
         
-        if($file->isValid() && ! $file->hasMoved()){
-            $namafoto = $file->getRandomName();
-            $file->move(FCPATH, 'upload/'. $namafoto);
-            $data['foto'] = $namafoto;    
-        }    
+        // if($file->isValid() && ! $file->hasMoved()){
+        //     $namafoto = $file->getRandomName();
+        //     $file->move(FCPATH, 'upload/'. $namafoto);
+        //     $data['foto'] = $namafoto;    
+        // }    
         
         
         $save = $pegawaimodel->save($data);

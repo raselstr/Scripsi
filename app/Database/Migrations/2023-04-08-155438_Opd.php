@@ -34,6 +34,7 @@ class Opd extends Migration
             ],
             'tanggal_hapus' => [
                 'type' => 'datetime',
+                
 
             ],
         ]);
