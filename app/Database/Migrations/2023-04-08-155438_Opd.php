@@ -3,6 +3,7 @@
 namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
+use CodeIgniter\Database\RawSql;
 
 class Opd extends Migration
 {
@@ -25,15 +26,18 @@ class Opd extends Migration
                     'unique'        => true,
             ],
             'tanggal_input' => [
-                'type' => 'datetime',
+                'type' => 'TIMESTAMP',
+                'default' => new RawSql('CURRENT_TIMESTAMP'),
                 
             ],
             'tanggal_update' => [
-                'type' => 'datetime',
+                'type' => 'TIMESTAMP',
+                'default' => new RawSql('CURRENT_TIMESTAMP'),
 
             ],
             'tanggal_hapus' => [
-                'type' => 'datetime',
+                'type' => 'TIMESTAMP',
+                'default' => new RawSql('CURRENT_TIMESTAMP'),
                 
 
             ],

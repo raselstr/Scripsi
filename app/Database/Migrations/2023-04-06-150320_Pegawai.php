@@ -3,12 +3,13 @@
 namespace App\Database\Migrations;
 
 use CodeIgniter\Database\Migration;
-use DateTime;
+use CodeIgniter\Database\RawSql;
 
 class Pegawai extends Migration
 {
     public function up()
     {
+        $this->db->disableForeignKeyChecks();
         $this->forge->addField([
             'id_pegawai' => [
                     'type' => 'INT',
@@ -38,24 +39,28 @@ class Pegawai extends Migration
                     'unsigned' => true,
             ],
             'tanggal_input' => [
-                'type' => 'datetime',
+                'type' => 'TIMESTAMP',
+                'default' => new RawSql('CURRENT_TIMESTAMP'),
                 
             ],
             'tanggal_update' => [
-                'type' => 'datetime',
+                'type' => 'TIMESTAMP',
+                'default' => new RawSql('CURRENT_TIMESTAMP'),
             ],
             'tanggal_hapus' => [
-                'type' => 'datetime',
+                'type' => 'TIMESTAMP',
+                'default' => new RawSql('CURRENT_TIMESTAMP'),
             ],
         ]);
+        $this->db->enableForeignKeyChecks();
         $this->forge->addKey('id_pegawai', true);
-        $this->forge->addForeignKey('id_opd','opd','id_opd', 'CASCADE', 'CASCADE', 'my_fk_idOpd');
+        $this->forge->addForeignKey('id_opd','opd','id_opd');
         $this->forge->createTable('pegawai');
     }
 
     public function down()
     {
-        $this->forge->dropForeignKey('pegawai','my_fk_idOpd');
+        $this->forge->dropForeignKey('pegawai','pegawai_id_opd_foreign');
         $this->forge->dropTable('pegawai');
     }
 }
