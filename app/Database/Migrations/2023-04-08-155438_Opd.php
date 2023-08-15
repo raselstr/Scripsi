@@ -37,7 +37,7 @@ class Opd extends Migration
             ],
             'tanggal_hapus' => [
                 'type' => 'TIMESTAMP',
-                'default' => new RawSql('CURRENT_TIMESTAMP'),
+                'default' => NULL,
                 
 
             ],
